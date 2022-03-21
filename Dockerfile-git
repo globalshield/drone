@@ -1,0 +1,8 @@
+FROM golang:1.17-alpine
+
+RUN apk update && apk add --no-cache openssh-client git ca-certificates && update-ca-certificates
+RUN git config --global user.name "GlobalShield"
+RUN git config --global user.email "github@globalshield.io"
+VOLUME /app
+
+ENTRYPOINT ["sh", "/app/git.sh"]
